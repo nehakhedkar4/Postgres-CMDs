@@ -1,0 +1,160 @@
+-- -- create table client(
+-- 	client_id int primary key,
+-- 	client_name varchar(25),
+-- 	branch_id int
+-- );
+-- alter table client 
+-- add foreign key(branch_id)
+-- references branch(branch_id) on delete cascade
+
+-- alter table work_with 
+-- add foreign key(client_id)
+-- references client(client_id) on delete cascade
+
+--Inserting branch table values
+-- insert into branch values(1,'Corporate','100');
+-- insert into branch values(2,'Scranton','102');
+-- insert into branch values(3,'stamford','106');
+
+-- Corporate
+-- insert into employee values(100,'Davis','Wallace',null,null);
+-- insert into employee values(101,'Jan','Levinson',null,null);
+-- insert into employee values(102,'Michael','Scott',null,null);
+-- insert into employee values(103,'Priya','Shah',null,null);
+-- insert into employee values(104,'Keshvi','Patel',null,null);
+-- insert into employee values(105,'prachi','Gamit',null,null);
+-- insert into employee values(106,'Manisha','Lehery',null,null);
+
+-- UPDATE employee
+-- SET branch_id = 1
+-- WHERE emp_id = 101; 
+-- #102 done 
+
+-- UPDATE employee
+-- SET branch_id = 2
+-- WHERE emp_id = 103;  
+-- #104
+
+-- UPDATE employee
+-- SET branch_id = 3
+-- WHERE emp_id = 104;
+-- -- or emp_id = 105 emp_id = 106;
+
+-- Work_with
+-- insert into work_with values(105,400,55000);
+-- insert into work_with values(102,401,56000);
+-- insert into work_with values(106,402,3000);
+-- insert into work_with values(103,403,55300);
+-- insert into work_with values(104,404,55700);
+
+-- insert into work_with values(105,404,53000);  #eroor emp_id alredy exits
+-- insert into work_with values(102,405,15000);   #already exists
+-- insert into work_with values(101,406,45000);   #already exists
+
+-- CLIENT 
+-- insert into client values(400,'Dunmore HighSchool',2);
+-- insert into client values(401,'Lackwana country',2);
+-- insert into client values(402,'FedEx',3);
+-- insert into client values(403,'Time Newspaper',3);
+-- insert into client values(404,'FedEx',2);
+
+-- select * from employee
+-- order by emp_id
+-- select * from branch
+-- select * from work_with
+-- select * from client
+
+-- FUNCTIONS 
+-- select count(emp_id)
+-- from employee
+select fname,lname
+from employee
+
+---------------------------04/11/2022--------------------------------------------
+
+-- WILDCARD
+-- select * 
+-- from client
+-- where client_name like '%High%';
+
+-- SELECT *
+-- FROM Book
+-- WHERE name NOT LIKE 'Post%';
+
+-- select * 
+-- from client
+-- where client_name like '___more%';
+
+-- UNION
+-- select fname as name
+-- from employee
+-- union
+-- select client_name
+-- from client
+
+--JOIN
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- left join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- right join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+select * from employee
+-- select * from branch
+-- select * from work_with
+
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- left join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+-- select emp_id,fname,branch.branch_name 
+-- from employee
+-- right join branch 
+-- on employee.emp_id = branch.mgr_id;
+
+-- --Nested Queiries
+-- select employee.fname, employee.lame
+-- from employee
+-- where employee.emp_id in(
+-- 	select work_with.emp_id
+-- 	from work_with
+-- 	where work_with.total_sales > 50000
+-- );
+
+-- -- ON DELETE 
+
+
+-- RLIKE OPERATOR
+ends with $a   'ends with letter a'
+starts with ^word or letter
+
+
+
+
+
+
+
+
+
+
+
+							
+
+
+							
+							

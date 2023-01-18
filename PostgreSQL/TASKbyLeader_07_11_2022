@@ -1,0 +1,69 @@
+-- TABLE 1
+create table student(
+	student_id int primary key,
+	student_name varchar,
+	roll_num int unique
+);
+-- ADD VALUES 
+insert into student values(1,'keshvi',12);
+insert into student values(2,'priya',13);
+insert into student values(3,'jassi',14);
+insert into student values(4,'jagu',15);
+
+-- SHOW TABLE
+select * from student;
+
+-- ------------------------------------------------------
+
+-- TABLE 2
+create table application(
+	application_id int,
+	fname varchar,
+	lname varchar
+);
+
+ALTER table application
+add foreign key(application_id) references student(student_id);
+
+-- ADD VALUES 
+insert into application values(1,'keshvi','shah');
+insert into application values(1,'priya','shah');
+insert into application values(2,'hello','world');
+insert into application values(1,'Aarti','shah');
+insert into application values(2,'Twinkal','shah');
+insert into application values(3,'Sonal','Rana');
+insert into application values(3,'Teju','shah');
+
+-- SHOW TABLE
+select * from application;
+
+-- JOIN
+select student.student_id, application.fname,application.lname, student.roll_num
+from student
+join application
+on application.application_id = student.student_id;
+
+-- INNER JOIN
+select student.student_name
+from student
+inner join application
+on application.application_id = student.student_id;
+
+-- OUTER JOIN
+select student.student_id,student.student_name
+from student
+full outer join application
+on application.application_id = student.student_id;
+
+-- LEFT JOIN
+select student.student_id, application.fname,application.lname
+from student
+left join application
+on application.application_id = student.student_id;
+
+-- RIGHT JOIN
+select student.student_id, application.fname,application.lname
+from student
+right join application
+on application.application_id = student.student_id;
+

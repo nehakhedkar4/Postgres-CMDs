@@ -1,0 +1,164 @@
+@@@@@@how to enter in postgresql commandline in terminal@@@@@@
+ --> sudo -u postgres psql
+
+@@@@@@how to create database@@@@@@
+postgres=# create database mydb;
+postgres=# create user myuser with encrypted password 'mypass';
+postgres=# grant all privileges on database mydb to myuser;	
+
+@@@@@@how delete database for:@@@@@@
+postgres=# DROP DATABASE [IF EXISTS) name;
+
+@@@@@@ how to revoke permisions for user@@@@@@
+postgres=# ALTER USER role_specification WITH OPTION1 OPTION2 OPTION3;
+postgres=# ALTER USER mytest WITH NOSUPERUSER;
+
+
+ALTER ROLE name [ [ WITH ] option [ ... ] ]
+
+       where option can be:
+
+             SUPERUSER | NOSUPERUSER
+           | CREATEDB | NOCREATEDB
+           |   | NOCREATEROLE
+           | CREATEUSER | NOCREATEUSER
+           | INHERIT | NOINHERIT
+           | LOGIN | NOLOGIN
+           | CONNECTION LIMIT connlimit
+           | [ ENCRYPTED | UNENCRYPTED ] PASSWORD 'password'
+           | VALID UNTIL 'timestamp'
+
+@@@@@@@@ for list of database @@@@@@@@@@@
+postgres=# \l
+
+
+@@@@@@@@ Switching Databases @@@@@@@@@@@
+postgres=# \c database_name(etc:-sale)
+You are now connected to database "sales" as user "ubuntu".
+sales=#
+
+
+@@@@@@@@ Listing Tables @@@@@@@@@@@@
+sales=# \dt
+No relations found.
+sales=#
+
+@@@@@@@@ table all fileds for @@@@@@@@
+\d+ table_name
+
+
+@@@@@@@@@@ import database command @@@@@@@@@@
+\COPY <table name> FROM 'location + file_name' DELIMITER ',' CSV HEADER;
+
+@@@@@@@@@@ TRUNCATE TABLE @@@@@@@@@@@@@@
+TRUNCATE TABLE table_name;
+  @@@@if cascade(connected table for)@@@@
+  TRUNCATE TABLE table_name CASCADE;
+
+TRUNCATE TABLE table_name RESTART IDENTITY;
+
+@@@@@@@@@ re indexing @@@@@@@@@
+REINDEX TABLE my_table; -- > all index in table
+
+REINDEX INDEX my_index; -- > perticauler index
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------users table import---------
+\COPY "INSTA_ALL_users" FROM '/root/insta_like_follow/users(1).csv' DELIMITER ',' CSV HEADER;
+
+
+---------order table import---------
+  \COPY "INSTA_ALL_orders"(type,custom_user_id,username,post_id,short_code,needed,recieved,image_url,no_like_log,reason_for_cancelorder,fromapp,order_status,deleted_at,created_at,updated_at,updated_time,user_id) FROM '/root/insta_like_follow/orders.csv' DELIMITER ',' CSV HEADER;
+  
+  
+  
+  
+-----------------------------------------------postgres + django-----------------------------------------------------
+
+-> https://www.digitalocean.com/community/tutorials/how-to-use-postgresql-with-your-django-application-on-ubuntu-20-04
+-> pip install psycopg2-binary 
+
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+	psql -d database -U user -W	Connects to a database under a specific user	-d: used to state the database name 
+	-U:used to state the database user
+	psql -h host -d database -U user -W	Connect to a database that resides on another host	-h: used to state the host 
+	-d: used to state the database name 
+	-U:used to state the database user
+	psql -U user -h host “dbname=db sslmode=require”	Use SSL mode for the connection	-h: used to state the host 
+	-U:used to state the database user
+	\c dbname	Switch connection to a new database	 
+	\l	List available databases	 
+	\dt	List available tables	 
+	\d table_name	Describe a table such as a column, type, modifiers of columns, etc.	 
+	\dn	List all schemes of the currently connected database	 
+	\df	List available functions in the current database	 
+	\dv	List available views in the current database	 
+	\du	List all users and their assign roles	 
+	SELECT version();	Retrieve the current version of PostgreSQL server	 
+	\g	Execute the last command again	 
+	\s	Display command history	 
+	\s filename	Save the command history to a file	 
+	\i filename	Execute psql commands from a file	 
+	\?	Know all available psql commands	 
+	\h	Get help	Eg:to get detailed information on ALTER TABLE statement use the \h ALTER TABLE
+	\e	Edit command in your own editor	 
+	\a	Switch from aligned to non-aligned column output	 
+	\H	Switch the output to HTML format	 
+	\q	Exit psql shell
+	
+	
+	--------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	================
+	INSTALL PGADMIN4 
+	================
+	
+	sudo apt  install curl
+	curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+	sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+	sudo apt install pgadmin4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+#################################################################### POSTGRESQL USING UBANTU #####################################################################################
+
+->  sudo apt update -y
+
+->  sudo apt install -y postgresql postgresql-contrib postgresql-client
+
+->  sudo dpkg --status postgresql  #TO VERIFY INSTALLATION PROCESS 
+
+->  sudo systemctl start postgresql.service  / sudo systemctl status postgresql.service  #STARTING AND VERIFYING THE POSTGRESQL SERVICES 
+
+->  sudo -u postgres psql #SECURING  THE DEFAULT  USER AND PASSWORD.
+
+->  \password #FOR SETTING UP THE PASSWORD  (EG: postgresql123)
+
+->  \q : to quit
+
+->  \conninfo : to get connection status 
+
+->  *(ctrl +d) to get out of the root directory. 
+
+-> sudo -u postgres createuser --interactive (eg:newuser) #creating new super user.
+
+-> sudo -u postgres createdb newdb / postgres@server:-~$ createdb sammy
+
+->  man createuser
+
+->  sudo -u postgres createdb sammy
+
+
+->  sudo adduser sammy	
+
+		
+
+
+
+
+
+
+
